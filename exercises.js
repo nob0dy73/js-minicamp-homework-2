@@ -22,9 +22,11 @@ function greeting(language) {
   if (language === 'German') {
     return 'Guten Tag!';
   } else if (language === 'English') {
-    return 'Hello';
+    return 'Hello!';
   } else if (language === 'Spanish') {
     return 'Hola!';
+  } else {
+    return 'Hello!';
   }
 }
 
@@ -64,12 +66,14 @@ function fizzBuzz(num) {
   //if num is divisible by 5 return 'buzz'
   //if num is divisible by 3 & 5 return 'fizzbuzz'
   //otherwise return num
-  if (num % 3 && num % 5) {
-    return 'fizzbuzz'
-  } else if (num % 3) {
+  if (num % 3 === 0 && num % 5 === 0) {
+    return 'fizzbuzz';
+  } else if (num % 3 === 0) {
     return 'fizz';
-  } else if (num % 5) {
-    return 'buzz'
+  } else if (num % 5 === 0) {
+    return 'buzz';
+  } else {
+    return num;
   }
 }
 
@@ -79,11 +83,15 @@ function isPrime(num) {
   //hint: a prime number is only evenly divisible by itself and 1
   //hint2: you can solve this using a for loop
   //note: 0 and 1 are NOT considered prime numbers
-  for (var i; i < num; i++) {
-    if (num % i === 0) {
+  if (num < 2) {
+    return false;
+  }
+  for (var i = 2; i < num; i++) {
+    if (num % i === 0 && !num) {
       return false;
     }
   }
+  return true;
 }
 
 function returnFirst(arr) {
@@ -105,23 +113,27 @@ function incrementByOne(arr) {
   //arr is an array of integers  
   //increase each integer by one
   //return the array
-  for (var i; i < arr.length; i++) {
-    arr[i]++;
+  var newArr = [];
+  for (var i = 0; i < arr.length; i++) {
+    var a = arr[i] + 1;
+    newArr.push(a);
   }
-  return arr;
+  return newArr;
 }
 
 function addItemToArray(arr, item) {
   //add the item to the end of the array
   //return the array
-  return arr.push(item);
+  arr.push(item);
+  return arr;
 }
 
 function addItemToFront(arr, item) {
   //add the item to the front of the array
   //return the array
   //hint: use the array method .unshift
-  return arr.unshift(item);
+  arr.unshift(item);
+  return arr;
 }
 
 function wordsToSentence(words) {
@@ -129,8 +141,8 @@ function wordsToSentence(words) {
   //return a string that is all of the words concatenated together
   //spaces need to be between each word
   //example: ['Hello', 'world!'] -> 'Hello world!'
-  var a = ''
-  for (var i; i < words.length; i++) {
+  var a = '';
+  for (var i = 0; i < words.length; i++) {
     if (i === (words.length - 1)) {
       a = a + words[i];
     } else {
@@ -143,20 +155,19 @@ function wordsToSentence(words) {
 function contains(arr, item) {
   //check to see if item is inside of arr
   //return true if it is, otherwise return false
-  for (var i; i < arr.length; i++) {
+  for (var i = 0; i < arr.length; i++) {
     if (item === arr[i]) {
       return true;
-    } else {
-      return false;
     }
   }
+  return false;
 }
 
 function addNumbers(numbers) {
   //numbers is an array of integers.
   //add all of the integers and return the value
-  var a = 0
-  for (var i; i < numbers.length; i++) {
+  var a = 0;
+  for (var i = 0; i < numbers.length; i++) {
     a = a + numbers[i];
   }
   return a;
@@ -165,8 +176,8 @@ function addNumbers(numbers) {
 function averageTestScore(testScores) {
   //testScores is an array.  Iterate over testScores and compute the average.
   //return the average
-  var a = 0
-  for (var i; i < testScores.length; i++) {
+  var a = 0;
+  for (var i = 0; i < testScores.length; i++) {
     a = a + testScores[i];
   }
   return a / testScores.length;
@@ -176,7 +187,7 @@ function largestNumber(numbers) {
   //numbers is an array of integers
   //return the largest integer
   var a = numbers[0];
-  for (var i; i < numbers.length; i++) {
+  for (var i = 0; i < numbers.length; i++) {
     if (a < numbers[i]) {
       a = numbers[i];
     }
